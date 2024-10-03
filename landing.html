@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background-image: url('landing-background.jpg'); /* Set your background image here */
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            background-color: rgba(76, 175, 80, 0.9);
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            transition: background-color 0.3s ease; /* Smooth background transition */
+        }
+
+        header:hover {
+            background-color: rgba(76, 175, 80, 1); /* Darken header on hover */
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.2s; /* Smooth background and transform */
+        }
+
+        nav a:hover {
+            background-color: rgba(76, 175, 80, 0.7);
+            transform: scale(1.05); /* Slightly enlarge link on hover */
+        }
+
+        .profile {
+            position: relative; /* Positioning context for dropdown */
+            display: inline-block; /* Keep it inline with nav links */
+        }
+
+        .dropbtn {
+            background-color: rgba(76, 175, 80, 0); /* Transparent background */
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 18px;
+            padding: 15px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease; /* Smooth background transition */
+        }
+
+        .dropbtn:hover {
+            background-color: rgba(76, 175, 80, 0.7); /* Background on hover */
+        }
+
+        .dropdown-content {
+            display: none; /* Hide dropdown content by default */
+            position: absolute; /* Position it below the button */
+            background-color: rgba(76, 175, 80, 0.9);
+            min-width: 160px; /* Minimum width for dropdown */
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block; /* Block display for dropdown links */
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(76, 175, 80, 0.7);
+        }
+
+        .profile:hover .dropdown-content {
+            display: block; /* Show dropdown on hover */
+        }
+
+        .content {
+            padding: 80px 20px; /* Padding to avoid overlap with header */
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px; /* Space between buttons */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
+            transition: background-color 0.3s ease, transform 0.2s; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px); /* Slightly raise button on hover */
+        }
+
+        .error-message {
+            color: #ffcc00; /* Yellow color for the error message */
+            margin-top: 10px;
+        }
+
+        section {
+            height: 100vh; /* Full height for each feature section */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 2px solid rgba(76, 175, 80, 0.9);
+            opacity: 0; /* Start hidden for fade-in effect */
+            animation: fadeIn 0.5s forwards; /* Fade-in animation */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1; /* Fade in to fully visible */
+            }
+        }
+
+        footer {
+            position: relative;
+            bottom: 10px;
+            text-align: center;
+            width: 100%;
+            color: white;
+            padding: 20px 0;
+        }
+    </style>
+    <script>
+        let cvUploaded = false;
+
+        function handleCVUpload() {
+            const cvUploadInput = document.getElementById('cv-upload');
+            cvUploadInput.click();
+        }
+
+        function checkCVUpload(event) {
+            if (event.target.files.length > 0) {
+                cvUploaded = true; // Set CV uploaded status to true
+                document.getElementById('interview-button').disabled = false; // Enable Interview Me button
+                document.getElementById('error-message').innerText = ''; // Clear error message
+            }
+        }
+
+        function redirectToInterview() {
+            if (cvUploaded) {
+                alert('Redirecting to Interview Scheduling!');
+                // Add your redirection logic here
+            } else {
+                document.getElementById('error-message').innerText = 'Please upload your CV first.'; // Display error message
+            }
+        }
+
+        // Smooth scroll function
+        function smoothScroll(target) {
+            const element = document.getElementById(target);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        Welcome to Interview Me
+        <nav>
+            <a href="javascript:void(0)" onclick="smoothScroll('home')">Home</a>
+            <a href="javascript:void(0)" onclick="smoothScroll('mock-interviews')">Mock Interviews</a>
+            <a href="javascript:void(0)" onclick="smoothScroll('resume-builder')">Resume Builder</a>
+            <a href="javascript:void(0)" onclick="smoothScroll('job-opportunities')">Job Opportunities</a>
+            <a href="javascript:void(0)" onclick="smoothScroll('interview-tips')">Interview Tips</a>
+            <div class="profile">
+                <button class="dropbtn" onclick="toggleDropdown()">Your Profile</button>
+                <div class="dropdown-content">
+                    <a href="#profile-details">Profile Details</a>
+                    <a href="#sign-out">Sign Out</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="content">
+        <h1>Your Journey Starts Here!</h1>
+        <p>Welcome to our platform. You can explore various features and connect with interviewers.</p>
+
+        <div class="button-container">
+            <button onclick="handleCVUpload()">Upload Your CV</button>
+            <input type="file" id="cv-upload" style="display:none;" accept=".pdf,.doc,.docx" onchange="checkCVUpload(event)">
+            <button id="interview-button" disabled onclick="redirectToInterview()">Interview Me</button>
+        </div>
+        <div class="error-message" id="error-message"></div> <!-- Error message area -->
+    </div>
+
+    <!-- Feature Sections -->
+    <section id="home">
+        <h2>Home</h2>
+        <p>Welcome to the home section! Learn about our platform.</p>
+    </section>
+
+    <section id="mock-interviews">
+        <h2>Mock Interviews</h2>
+        <p>Details about Mock Interviews go here. Describe what users can do with this feature.</p>
+    </section>
+
+    <section id="resume-builder">
+        <h2>Resume Builder</h2>
+        <p>Details about Resume Builder go here. Describe what users can do with this feature.</p>
+    </section>
+
+    <section id="job-opportunities">
+        <h2>Job Opportunities</h2>
+        <p>Details about Job Opportunities go here. Describe what users can do with this feature.</p>
+    </section>
+
+    <section id="interview-tips">
+        <h2>Interview Tips</h2>
+        <p>Details about Interview Tips go here. Describe what users can do with this feature.</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        &copy; 2024 Interview Me. All rights reserved.
+    </footer>
+
+</body>
+</html>

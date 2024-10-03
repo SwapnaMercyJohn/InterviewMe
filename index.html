@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Me - Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+    
+
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family:"Lucida Handwritting";
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            font-family:"Lucida Handwriting", cursive;
+        }
+
+        .cta-button {
+            background-color: #96a1a1;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #5e8080;
+        }
+
+        footer {
+            background-color: rgba(13, 14, 13, 0.9);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .cta-button {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to InterviewMe</h1>
+        <p>Prepare for your dream job with expert interview coaching and resources.</p>
+        <!-- Call-to-Action Button to Sign In Page -->
+        <a href="signin.html" class="cta-button">Get Started</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        &copy; 2024 Interview Me. All rights reserved.
+    </footer>
+
+</body>
+</html>
