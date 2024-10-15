@@ -1,259 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: white;
-            background-image: url('landing-background.jpg'); /* Set your background image here */
-            background-size: cover;
-            background-position: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Page Full-Slide Design</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
 
-        header {
-            background-color: rgba(76, 175, 80, 0.9);
-            padding: 10px;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-size: 24px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
-            transition: background-color 0.3s ease; /* Smooth background transition */
-        }
+    /* Header styling */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color:rgba(0, 0, 0, 0.2);
+      padding: 10px 20px;
+      color:rgb(65, 10, 110);;
+      z-index: 10;
+    }
 
-        header:hover {
-            background-color: rgba(76, 175, 80, 1); /* Darken header on hover */
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-family: " ";
+      font-size: 50%;
+    }
 
-        nav {
-            margin-top: 10px;
-        }
+    .logo img {
+      width: 50px;
+      margin-right: 10px;
+    }
 
-        nav a {
-            color: white;
-            padding: 15px 20px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: background-color 0.3s ease, transform 0.2s; /* Smooth background and transform */
-        }
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      text-align: center;
+    }
 
-        nav a:hover {
-            background-color: rgba(76, 175, 80, 0.7);
-            transform: scale(1.05); /* Slightly enlarge link on hover */
-        }
+    .nav-links a {
+      color: rgb(38, 3, 58);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
 
-        .profile {
-            position: relative; /* Positioning context for dropdown */
-            display: inline-block; /* Keep it inline with nav links */
-        }
+    .nav-links a:hover {
+      background-color: #9075aa;
+    }
 
-        .dropbtn {
-            background-color: rgba(76, 175, 80, 0); /* Transparent background */
-            border: none;
-            cursor: pointer;
-            color: white;
-            font-size: 18px;
-            padding: 15px 20px;
-            text-decoration: none;
-            transition: background-color 0.3s ease; /* Smooth background transition */
-        }
+    .profile {
+      position: relative;
+      cursor: pointer;
+    }
 
-        .dropbtn:hover {
-            background-color: rgba(76, 175, 80, 0.7); /* Background on hover */
-        }
+    .profile-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      color: rgb(47, 3, 53);
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0px 8px 16px rgba(25, 3, 37, 0.2);
+    }
 
-        .dropdown-content {
-            display: none; /* Hide dropdown content by default */
-            position: absolute; /* Position it below the button */
-            background-color: rgba(76, 175, 80, 0.9);
-            min-width: 160px; /* Minimum width for dropdown */
-            z-index: 1;
-        }
+    .profile-dropdown a {
+      display: block;
+      padding: 10px;
+      color: rgb(12, 1, 22);
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
 
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block; /* Block display for dropdown links */
-        }
+    .profile-dropdown a:hover {
+      background-color: #f5f5f5;
+    }
 
-        .dropdown-content a:hover {
-            background-color: rgba(76, 175, 80, 0.7);
-        }
+    .profile:hover .profile-dropdown {
+      display: block;
+    }
 
-        .profile:hover .dropdown-content {
-            display: block; /* Show dropdown on hover */
-        }
+    /* Full-page sections */
+    section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      background-image: url(back.jpg);
+      border-bottom: 1px solid #ddd;
+    }
 
-        .content {
-            padding: 80px 20px; /* Padding to avoid overlap with header */
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
+    section:nth-child(even) {
+      background-color: #e0e0e0;
+    }
 
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
+    h1 {
+      font-size: 3em;
+      font-family: " ";
+      color: #3e0853;
+      margin-bottom: 10px;
+      animation: fadeIn 1s ease-in;
+     
+    }
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 0 10px; /* Space between buttons */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
-            transition: background-color 0.3s ease, transform 0.2s; /* Smooth transition */
-        }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      animation: fadeIn 1.5s ease-in ;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: #8a50a1;
+      font-style: italic;
+      
+    }
 
-        button:hover {
-            background-color: #45a049;
-            transform: translateY(-2px); /* Slightly raise button on hover */
-        }
+    /* Upload box styling */
+    .upload-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      animation: slideUp 2s ease-in;
+    }
 
-        .error-message {
-            color: #ffcc00; /* Yellow color for the error message */
-            margin-top: 10px;
-        }
+    .upload-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 25px;
+      background-color: rgba(23, 1, 29, 0.9);
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        section {
-            height: 100vh; /* Full height for each feature section */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-bottom: 2px solid rgba(76, 175, 80, 0.9);
-            opacity: 0; /* Start hidden for fade-in effect */
-            animation: fadeIn 0.5s forwards; /* Fade-in animation */
-        }
+    .upload-label:hover {
+      background-color: #3e0853;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1; /* Fade in to fully visible */
-            }
-        }
+    .upload-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
 
-        footer {
-            position: relative;
-            bottom: 10px;
-            text-align: center;
-            width: 100%;
-            color: white;
-            padding: 20px 0;
-        }
-    </style>
-    <script>
-        let cvUploaded = false;
+    #interviewMeBtn {
+      display: none;
+      background-color: #300e44;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s,transform 0.2s;
+    }
 
-        function handleCVUpload() {
-            const cvUploadInput = document.getElementById('cv-upload');
-            cvUploadInput.click();
-        }
+    #interviewMeBtn:hover {
+      background-color: #9648b4;
+      transform: scale(1.05);
+    }
+    
+    /* Styling for the Mock Interview Section */
+#mockinterview {
+    padding: 90px 0;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: small;
+    background-image: url("au.png");
+}
 
-        function checkCVUpload(event) {
-            if (event.target.files.length > 0) {
-                cvUploaded = true; // Set CV uploaded status to true
-                document.getElementById('interview-button').disabled = false; // Enable Interview Me button
-                document.getElementById('error-message').innerText = ''; // Clear error message
-            }
-        }
+#mockinterview h2 {
+    font-size: 3rem;
+    color: #34495e;
+    margin-bottom: 8px;
+}
 
-        function redirectToInterview() {
-            if (cvUploaded) {
-                alert('Redirecting to Interview Scheduling!');
-                // Add your redirection logic here
-            } else {
-                document.getElementById('error-message').innerText = 'Please upload your CV first.'; // Display error message
-            }
-        }
+/* Container to center the content */
+.container::before {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        // Smooth scroll function
-        function smoothScroll(target) {
-            const element = document.getElementById(target);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    </script>
+/* Flexbox layout for mock-content */
+.mock-content {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-top: 100px;
+
+}
+
+/* Text content styling */
+.text-content {
+    max-width: 700px;
+    font-size: 1.2rem;
+    color: #2c455e;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.text-content p{
+  color:#1c0229;
+  font-style:oblique;
+  font-family: " ";
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-in-out forwards;
+}
+
+/* CTA button styling */
+.cta-button {
+    background-color: #a95cd6;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #3a0437;
+}
+
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .mock-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image-container {
+        flex-direction: column;
+    }
+
+    .image-wrapper img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+    .resumeh {
+      font-size: 3em;
+      font-family: " ";
+      color: #3e0853;
+      margin-bottom: 10px;
+      animation: fadeIn 1s ease-in;
+     
+    }
+
+    .resumep {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      animation: fadeIn 1.5s ease-in ;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: #8a50a1;
+      font-style: italic;
+      
+    }
+
+    
+    .resume-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      animation: slideUp 2s ease-in;
+}
+
+.resume-button-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #1c0229; /* Green color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.resume-button-link:hover {
+    background-color: #521152; /* Darker green on hover */
+}
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    /* Smooth scrolling for navigation */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #333;
+        padding: 10px;
+      }
+    }
+
+    #interview-Tips {
+    background-color: #f0f8ff;
+    padding: 50px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+#interview-Tips h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.tips-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 tips per row */
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tip-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.tip-item:hover {
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tip-icon {
+    font-size: 1.8rem;
+}
+
+.tip-header h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    color: #3498db;
+    transition: transform 0.3s;
+}
+
+.tip-content {
+    display: none;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #2c3e50;
+    text-align: left;
+    line-height: 1.6;
+}
+
+/* Toggle Effect */
+.tip-item.active .tip-content {
+    display: block;
+}
+
+.tip-item.active .toggle-icon {
+    transform: rotate(45deg);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .tips-container {
+        grid-template-columns: 1fr; /* One column on smaller screens */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .tips-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on medium-sized screens */
+    }
+}
+
+/* About Us Section Styling */
+#about-us {
+    background-color: #222;
+    padding: 40px 0;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.about-us-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.about-us-column {
+    flex: 1;
+    min-width: 180px;
+    margin: 10px;
+}
+
+.about-us-column h3 {
+    font-size: 1.2rem;
+    color: #f1c40f;
+    margin-bottom: 20px;
+}
+
+.about-us-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.about-us-column ul li {
+    margin-bottom: 10px;
+}
+
+.about-us-column ul li a {
+    color: #b8b8b8;
+    text-decoration: none;
+}
+
+.about-us-column ul li a:hover {
+    color: #f1c40f;
+}
+
+/* Social Media Icons */
+.social-media-icons {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.social-media-icons li {
+    list-style: none;
+}
+
+.social-media-icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.newsletter-signup {
+    margin-top: 20px;
+}
+
+.signup-btn {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.signup-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #111;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    color: #fff;
+}
+
+footer select {
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-us-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+  </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        Welcome to Interview Me
-        <nav>
-            <a href="javascript:void(0)" onclick="smoothScroll('home')">Home</a>
-            <a href="javascript:void(0)" onclick="smoothScroll('mock-interviews')">Mock Interviews</a>
-            <a href="javascript:void(0)" onclick="smoothScroll('resume-builder')">Resume Builder</a>
-            <a href="javascript:void(0)" onclick="smoothScroll('job-opportunities')">Job Opportunities</a>
-            <a href="javascript:void(0)" onclick="smoothScroll('interview-tips')">Interview Tips</a>
-            <div class="profile">
-                <button class="dropbtn" onclick="toggleDropdown()">Your Profile</button>
-                <div class="dropdown-content">
-                    <a href="#profile-details">Profile Details</a>
-                    <a href="#sign-out">Sign Out</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Main Content Section -->
-    <div class="content">
-        <h1>Your Journey Starts Here!</h1>
-        <p>Welcome to our platform. You can explore various features and connect with interviewers.</p>
-
-        <div class="button-container">
-            <button onclick="handleCVUpload()">Upload Your CV</button>
-            <input type="file" id="cv-upload" style="display:none;" accept=".pdf,.doc,.docx" onchange="checkCVUpload(event)">
-            <button id="interview-button" disabled onclick="redirectToInterview()">Interview Me</button>
-        </div>
-        <div class="error-message" id="error-message"></div> <!-- Error message area -->
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="im.png" alt="Company Logo">
+      <h1>InterviewMe</h1>
     </div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#mockinterview">Mock Interview</a>
+      <a href="#resumeBuilder">Resume Builder</a>
+      <a href="#interview-Tips">Interview Tips</a>
+      <a href="#about-us">About Us</a>
+      <a href="#faqs">FAQs</a>
+      <div class="profile">
+        <span>Profile</span>
+        <div class="profile-dropdown">
+          <a href="#">Your Resume</a>
+          <a href="#">Settings</a>
+          <a href="#">Upgrade Plans</a>
+          <a href="#">Logout</a>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <!-- Feature Sections -->
-    <section id="home">
-        <h2>Home</h2>
-        <p>Welcome to the home section! Learn about our platform.</p>
-    </section>
+  <!-- Home Section -->
+  <section id="home">
+    <div>
+      <h1>Welcome to InterviewMe</h1>
+      <p>Upload your CV to get started with our interview preparation process. We provide personalized mock interviews, resume building tools, and expert interview tips.</p>
+    <div class="upload-box">
+      <label for="cvUpload" class="upload-label">
+        <img src="file.png" alt="Upload Icon" class="upload-icon">
+        <span>Upload your CV</span>
+      </label>
+      <input type="file" id="cvUpload" accept=".pdf,.doc,.docx" style="display: none;">
+      <button id="interviewMeBtn" onclick="window.location.href='interview.html'">Interview Me</button>
+    </div>
+    </div>
+  </section>
 
-    <section id="mock-interviews">
-        <h2>Mock Interviews</h2>
-        <p>Details about Mock Interviews go here. Describe what users can do with this feature.</p>
-    </section>
+  <!-- Mock Interview Section -->
+  <section id="mockinterview">
+    <div class="container">
+        <div class="mock-content">
+            <div class="text-content">
+                <p>
+                    Welcome to <strong>InterviewMe</strong>platform, platform, where you can sharpen your interview skills and gain a competitive edge. Using AI and voice recognition, we simulate real-world interviews with personalized questions, real-time feedback, and adaptive algorithms. Practice with our AI interviewer to boost your confidence, enhance your skills, and increase your chances of success. Start your interview journey today!
+                </p>
+                <button class="cta-button">Start Your Mock Interview</button>
+            </div>
 
-    <section id="resume-builder">
-        <h2>Resume Builder</h2>
-        <p>Details about Resume Builder go here. Describe what users can do with this feature.</p>
-    </section>
+        </div>
+    </div>
+</section>
 
-    <section id="job-opportunities">
-        <h2>Job Opportunities</h2>
-        <p>Details about Job Opportunities go here. Describe what users can do with this feature.</p>
-    </section>
 
-    <section id="interview-tips">
-        <h2>Interview Tips</h2>
-        <p>Details about Interview Tips go here. Describe what users can do with this feature.</p>
-    </section>
+  <!-- Resume Builder Section -->
+  <section id="resumeBuilder">
+    <div>
+    <h2 class="resumeh">Resume Builder</h2>
+    <p class="resumep">Build your resume here interactively.</p>
+    <div class="resume-button">
+      <a href="resume-builder.html" class="resume-button-link">
+          Make Your Resume Here
+      </a>
+    </div>
+  </div>
+  
+    <!-- Add resume builder functionality -->
+  </section>
 
-    <!-- Footer Section -->
-    <footer>
-        &copy; 2024 Interview Me. All rights reserved.
-    </footer>
+  <!-- Interview Tips Section -->
+  <section id="interview-Tips">
+    <h2>Top Interview Tips</h2>
+    <div class="tips-container">
+        <div class="tip-item">
+            <div class="tip-header">
+                <span class="tip-icon">💼</span>
+                <h3>Research the Company</h3>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="tip-content">
+                <p>Before your interview, take time to research the company's mission, values, and recent achievements.</p>
+            </div>
+        </div>
+
+        <div class="tip-item">
+            <div class="tip-header">
+                <span class="tip-icon">🗣️</span>
+                <h3>Practice Common Questions</h3>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="tip-content">
+                <p>Be ready to answer common interview questions, using examples to support your answers.</p>
+            </div>
+        </div>
+
+        <div class="tip-item">
+            <div class="tip-header">
+                <span class="tip-icon">🕒</span>
+                <h3>Arrive Early</h3>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="tip-content">
+                <p>Aim to arrive at least 10-15 minutes before your interview to show punctuality.</p>
+            </div>
+        </div>
+
+        <div class="tip-item">
+            <div class="tip-header">
+                <span class="tip-icon">✍️</span>
+                <h3>Prepare Questions</h3>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="tip-content">
+                <p>Prepare thoughtful questions about the company or role to show your interest.</p>
+            </div>
+        </div>
+
+        <div class="tip-item">
+            <div class="tip-header">
+                <span class="tip-icon">😊</span>
+                <h3>Stay Positive and Confident</h3>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="tip-content">
+                <p>Maintain a positive attitude throughout the interview, smile, and show confidence.</p>
+            </div>
+        </div>
+
+        <div class="tip-item">
+            <div class="tip-header">
+                <span class="tip-icon">💡</span>
+                <h3>Follow Up After the Interview</h3>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="tip-content">
+                <p>Send a follow-up email thanking the interviewer for their time and reiterating your interest.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- About Us Section -->
+  <!-- About Us Section -->
+<section id="about-us">
+  <div class="about-us-container">
+      <div class="about-us-column">
+          <h3>CONTENT</h3>
+          <ul>
+              <li><a href="#">Search trends</a></li>
+              <li><a href="#">Blog</a></li>
+          </ul>
+      </div>
+      <div class="about-us-column">
+          <h3>INFORMATION</h3>
+          <ul>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">API</a></li>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Sell content</a></li>
+              <li><a href="#">Brand guidelines</a></li>
+              <li><a href="#">Events</a></li>
+          </ul>
+      </div>
+      <div class="about-us-column">
+          <h3>LEGAL</h3>
+          <ul>
+              <li><a href="#">Terms of use</a></li>
+              <li><a href="#">License agreement</a></li>
+              <li><a href="#">Privacy policy</a></li>
+              <li><a href="#">Copyright information</a></li>
+              <li><a href="#">Cookies policy</a></li>
+              <li><a href="#">Cookies settings</a></li>
+          </ul>
+      </div>
+      <div class="about-us-column">
+          <h3>SUPPORT</h3>
+          <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Search guide</a></li>
+              <li><a href="#">Contact</a></li>
+          </ul>
+      </div>
+      <div class="about-us-column">
+          <h3>SOCIAL MEDIA</h3>
+          <ul class="social-media-icons">
+              <li><a href="#"><img src="facebook-icon.png" alt="Facebook"></a></li>
+              <li><a href="#"><img src="twitter-icon.png" alt="Twitter"></a></li>
+              <li><a href="#"><img src="pinterest-icon.png" alt="Pinterest"></a></li>
+              <li><a href="#"><img src="instagram-icon.png" alt="Instagram"></a></li>
+              <li><a href="#"><img src="youtube-icon.png" alt="YouTube"></a></li>
+              <li><a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a></li>
+          </ul>
+          <div class="newsletter-signup">
+              <p>Get exclusive updates sent to your inbox</p>
+              <button class="signup-btn">Sign up</button>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+      <p>&copy; 2024 Mock Interview Inc. All rights reserved.</p>
+      <select name="language" id="language">
+          <option value="english">English</option>
+          <option value="spanish">Español</option>
+          <!-- Add other languages if necessary -->
+      </select>
+  </div>
+</footer>
+
+
+  <!-- FAQs Section -->
+  <section id="faqs">
+    <h2>FAQs</h2>
+    <p>Frequently asked questions.</p>
+  </section>
+
+  <script>
+    // Show 'Interview Me' button when a file is uploaded
+    const cvUpload = document.getElementById('cvUpload');
+    const interviewMeBtn = document.getElementById('interviewMeBtn');
+
+    cvUpload.addEventListener('change', function() {
+      if (cvUpload.files.length > 0) {
+        interviewMeBtn.style.display = 'inline-block';
+      } else {
+        interviewMeBtn.style.display = 'none';
+      }
+    });
+    // JavaScript to handle collapsible interview tips
+const tipItems = document.querySelectorAll('.tip-item');
+
+tipItems.forEach(item => {
+    item.addEventListener('click', () => {
+        item.classList.toggle('active');
+    });
+});
+
+  </script>
 
 </body>
 </html>
