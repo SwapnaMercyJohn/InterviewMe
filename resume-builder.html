@@ -3,304 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to InterviewMe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Editable Resume Builder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f0f4f8;
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
         }
-        header {
-      top: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color:rgba(0, 0, 0, 0.2);
-      padding: 10px 20px;
-      color:rgb(65, 10, 110);;
-      z-index: 10;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      font-family: " ";
-      font-size: 50%;
-    }
-
-    .logo img {
-      width: 50px;
-      margin-right: 10px;
-    }
 
         .container {
             max-width: 900px;
-            margin: 20px auto;
+            margin: 0 auto;
+            background-color: #fff;
             padding: 20px;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
-        .e{
+
+        .header {
             text-align: center;
-            font-family: " ";
         }
-        h1 {
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .header h2 {
+            font-size: 1.2em;
+            font-weight: lighter;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
             text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .section-title {
+            font-weight: bold;
+            text-transform: uppercase;
             color: #333;
-            font-size: 32px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
         }
 
-        section {
+        .section-content {
+            font-size: 0.9em;
+            color: #333;
             margin-bottom: 30px;
-            padding: 20px;
-            background-image: url("back.jpg");
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
-        button {
-            padding: 12px 20px;
-            background-color: #380742;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        .section-content p, .section-content ul {
             margin: 10px 0;
         }
 
-        button:hover {
-            background-color: #c168c4;
+        ul {
+            padding-left: 20px;
         }
 
-        .resume-button {
-            display: block;
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .skills-list li {
+            flex: 1 1 30%;
+            list-style: none;
+            margin: 5px 0;
+        }
+
+        /* Download Button */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
             text-align: center;
-            margin-top: 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px 0;
         }
 
-        .resume-preview {
-            margin-top: 30px;
-            padding: 20px;
-            background: linear-gradient(to right, #e3f2fd, #bbdefb);
-            border: 1px solid #ddd;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
+        .button:hover {
+            background-color: #45a049;
         }
 
-        #resumeContent {
-            position: relative;
-            z-index: 1;
+        .form-container {
+            margin: 20px 0;
         }
 
-        /* Add other styles for the resume builder as mentioned in previous response */
-        /* Resume Builder styles */
-        /* [Copy the CSS from the previous resume builder code] */
-        /* Make sure to include all necessary styles here */
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-          <img src="im.png" alt="Company Logo">
-          <h1>InterviewMe</h1>
+    <div class="container">
+        <!-- Editable form section -->
+        <div class="form-container">
+            <label for="nameInput">Full Name:</label>
+            <input type="text" id="nameInput" placeholder="Enter your full name">
+
+            <label for="titleInput">Professional Title:</label>
+            <input type="text" id="titleInput" placeholder="Enter your professional title">
+
+            <label for="contactInput">Contact Information:</label>
+            <input type="text" id="contactInput" placeholder="Phone | Email | Location | LinkedIn">
+
+            <label for="overviewInput">Professional Overview:</label>
+            <textarea id="overviewInput" placeholder="Enter a brief professional summary"></textarea>
+
+            <label for="experienceInput">Work Experience:</label>
+            <textarea id="experienceInput" placeholder="Describe your work experience (e.g., company name, position, date range, responsibilities)"></textarea>
+
+            <label for="projectsInput">Projects:</label>
+            <textarea id="projectsInput" placeholder="Describe your projects"></textarea>
+
+            <label for="skillsInput">Skills (Comma separated):</label>
+            <input type="text" id="skillsInput" placeholder="e.g., Communication, Strategy, Team Management">
+
+            <label for="educationInput">Education:</label>
+            <textarea id="educationInput" placeholder="Enter your educational background (e.g., degree, university, date)"></textarea>
+
+            <button class="button" onclick="updateResume()">Update CV</button>
         </div>
-    </header>
-        <section id="resumeBuilder">
-            <h2 class="e">ENHANCED RESUME BUILDER</h2>
-            <form id="resumeForm">
-                <!-- Profile Picture Upload -->
-                <section>
-                    <h3 class="form-section-title"><i class="fas fa-user-circle"></i> Profile Picture</h3>
-                    <label for="profilePicture">Upload a Profile Picture:</label>
-                    <input type="file" id="profilePicture" accept="image/*" required>
-                </section>
 
-                <!-- Personal Information Section -->
-                <section>
-                    <h3 class="form-section-title"><i class="fas fa-user"></i> Personal Information</h3>
-                    <label for="name">Full Name:</label>
-                    <input type="text" id="name" placeholder="Your Name" required>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="you@example.com" required>
-
-                    <label for="phone">Phone:</label>
-                    <input type="text" id="phone" placeholder="Your Phone Number" required>
-                </section>
-
-                <!-- Education Section -->
-                <section>
-                    <h3 class="form-section-title"><i class="fas fa-graduation-cap"></i> Education</h3>
-                    <label for="school">High School:</label>
-                    <input type="text" id="school" placeholder="Your High School" required>
-
-                    <label for="schoolGraduationYear">Graduation Year:</label>
-                    <input type="number" id="schoolGraduationYear" placeholder="Year" required>
-
-                    <label for="degree">Degree:</label>
-                    <input type="text" id="degree" placeholder="Your Degree" required>
-
-                    <label for="university">University/College:</label>
-                    <input type="text" id="university" placeholder="Your University" required>
-
-                    <label for="graduationYear">Graduation Year:</label>
-                    <input type="number" id="graduationYear" placeholder="Year" required>
-                </section>
-
-                <!-- Work Experience Section -->
-                <section>
-                    <h3 class="form-section-title"><i class="fas fa-briefcase"></i> Work Experience</h3>
-                    <label for="jobTitle">Job Title:</label>
-                    <input type="text" id="jobTitle" placeholder="Your Job Title">
-
-                    <label for="company">Company:</label>
-                    <input type="text" id="company" placeholder="Your Company">
-
-                    <label for="jobDescription">Description:</label>
-                    <textarea id="jobDescription" placeholder="Describe your work..."></textarea>
-                </section>
-
-                <!-- Certifications Section -->
-                <section>
-                    <h3 class="form-section-title"><i class="fas fa-certificate"></i> Certifications</h3>
-                    <input type="text" id="certification1" placeholder="Certification 1">
-                    <input type="text" id="certification2" placeholder="Certification 2">
-                    <input type="text" id="certification3" placeholder="Certification 3">
-                </section>
-
-                <!-- Languages Section -->
-                <section>
-                    <h3 class="form-section-title"><i class="fas fa-language"></i> Languages</h3>
-                    <input type="text" id="language1" placeholder="Language 1">
-                    <input type="text" id="language2" placeholder="Language 2">
-                    <input type="text" id="language3" placeholder="Language 3">
-                </section>
-
-                <!-- Projects Section -->
-                <section>
-                    <h3 class="form-section-title"><i class="fas fa-project-diagram"></i> Projects</h3>
-                    <input type="text" id="project1" placeholder="Project Title 1">
-                    <textarea id="projectDescription1" placeholder="Project Description 1"></textarea>
-
-                    <input type="text" id="project2" placeholder="Project Title 2">
-                    <textarea id="projectDescription2" placeholder="Project Description 2"></textarea>
-                </section>
-
-                <!-- Skills Section -->
-                <section>
-                    <h3 class="form-section-title"><i class="fas fa-tools"></i> Skills</h3>
-                    <input type="text" id="skill1" placeholder="Skill 1">
-                    <input type="text" id="skill2" placeholder="Skill 2">
-                    <input type="text" id="skill3" placeholder="Skill 3">
-                </section>
-
-                <!-- Submit and Print Buttons -->
-                <button type="submit">Generate Resume</button>
-                <button type="button" onclick="printResume()">Print Resume</button>
-            </form>
-
-            <!-- Resume Preview -->
-            <div class="resume-preview" id="resumePreview">
-                <div id="resumeContent"></div>
+        <!-- CV preview section -->
+        <div id="cv" class="cv-container">
+            <div class="header">
+                <h1 id="name">Full Name</h1>
+                <h2 id="title">Professional Title</h2>
+                <div class="contact-info" id="contact-info">Contact Information</div>
             </div>
-        </section>
+
+            <div class="section">
+                <h3 class="section-title">Professional Overview</h3>
+                <div class="section-content">
+                    <p id="overview">Your professional overview goes here.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Work Experience</h3>
+                <div class="section-content" id="experience">
+                    <p>Work experience will be shown here.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Projects</h3>
+                <div class="section-content" id="projects">
+                    <p>Projects will be displayed here.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Skills</h3>
+                <div class="section-content">
+                    <ul class="skills-list" id="skills">
+                        <li>Skills will be listed here.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Education</h3>
+                <div class="section-content" id="education">
+                    <p>Education details will be shown here.</p>
+                </div>
+            </div>
+
+            <!-- Download button to be hidden in PDF -->
+            <button class="button" id="downloadBtn">Download as PDF</button>
+        </div>
     </div>
 
     <script>
-        document.getElementById('resumeForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+        // Function to update CV with user input
+        function updateResume() {
+            document.getElementById('name').innerText = document.getElementById('nameInput').value;
+            document.getElementById('title').innerText = document.getElementById('titleInput').value;
+            document.getElementById('contact-info').innerText = document.getElementById('contactInput').value;
+            document.getElementById('overview').innerText = document.getElementById('overviewInput').value;
+            document.getElementById('experience').innerText = document.getElementById('experienceInput').value;
+            document.getElementById('projects').innerText = document.getElementById('projectsInput').value;
 
-            // Collecting data from the form
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const school = document.getElementById('school').value;
-            const schoolGraduationYear = document.getElementById('schoolGraduationYear').value;
-            const degree = document.getElementById('degree').value;
-            const university = document.getElementById('university').value;
-            const graduationYear = document.getElementById('graduationYear').value;
-            const jobTitle = document.getElementById('jobTitle').value;
-            const company = document.getElementById('company').value;
-            const jobDescription = document.getElementById('jobDescription').value;
-            const certifications = [
-                document.getElementById('certification1').value,
-                document.getElementById('certification2').value,
-                document.getElementById('certification3').value,
-            ].filter(cert => cert);
-            const languages = [
-                document.getElementById('language1').value,
-                document.getElementById('language2').value,
-                document.getElementById('language3').value,
-            ].filter(lang => lang);
-            const projects = [
-                {
-                    title: document.getElementById('project1').value,
-                    description: document.getElementById('projectDescription1').value,
-                },
-                {
-                    title: document.getElementById('project2').value,
-                    description: document.getElementById('projectDescription2').value,
-                },
-            ].filter(project => project.title);
-            const skills = [
-                document.getElementById('skill1').value,
-                document.getElementById('skill2').value,
-                document.getElementById('skill3').value,
-            ].filter(skill => skill);
-            
-            const profilePic = document.getElementById('profilePicture').files[0] ? URL.createObjectURL(document.getElementById('profilePicture').files[0]) : '';
+            let skillsArray = document.getElementById('skillsInput').value.split(',');
+            let skillsHTML = '';
+            skillsArray.forEach(skill => {
+                skillsHTML += `<li>${skill.trim()}</li>`;
+            });
+            document.getElementById('skills').innerHTML = skillsHTML;
 
-            // Generate the resume content
-            const resumeContent = `
-                <h2>${name}</h2>
-                <img src="${profilePic}" class="profile-pic" alt="Profile Picture">
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Phone:</strong> ${phone}</p>
-                <h3>Education</h3>
-                <p><strong>${school}</strong> (${schoolGraduationYear})</p>
-                <p><strong>${degree}</strong>, ${university} (${graduationYear})</p>
-                <h3>Work Experience</h3>
-                <p><strong>${jobTitle}</strong> at ${company}</p>
-                <p>${jobDescription}</p>
-                <h3>Certifications</h3>
-                <ul>
-                    ${certifications.map(cert => `<li>${cert}</li>`).join('')}
-                </ul>
-                <h3>Languages</h3>
-                <ul>
-                    ${languages.map(lang => `<li>${lang}</li>`).join('')}
-                </ul>
-                <h3>Projects</h3>
-                ${projects.map(project => `<h4>${project.title}</h4><p>${project.description}</p>`).join('')}
-                <h3>Skills</h3>
-                <ul>
-                    ${skills.map(skill => `<li>${skill}</li>`).join('')}
-                </ul>
-            `;
-
-            // Insert the resume content into the preview section
-            document.getElementById('resumeContent').innerHTML = resumeContent;
-
-            // Scroll to the preview section
-            document.getElementById('resumePreview').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Print functionality
-        function printResume() {
-            const printContent = document.getElementById('resumePreview').innerHTML;
-            const originalContent = document.body.innerHTML;
-
-            document.body.innerHTML = printContent;
-            window.print();
-            document.body.innerHTML = originalContent;
+            document.getElementById('education').innerText = document.getElementById('educationInput').value;
         }
+
+        // Function to download CV as PDF (with A4 paper size)
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const element = document.querySelector('.cv-container');
+            var opt = {
+                margin: 0.5,
+                filename: 'Resume.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            
+            // Temporarily hide the download button before generating the PDF
+            document.getElementById('downloadBtn').style.display = 'none';
+
+            // Generate PDF
+            html2pdf().from(element).set(opt).save().then(function() {
+                // Show the download button again after PDF is generated
+                document.getElementById('downloadBtn').style.display = 'block';
+            });
+        });
     </script>
 </body>
 </html>
