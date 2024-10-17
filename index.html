@@ -17,9 +17,7 @@
             background-repeat: no-repeat;
             color: white;
         }
-
-    
-
+        
         .hero {
             flex: 1;
             display: flex;
@@ -31,31 +29,47 @@
         }
 
         .hero h1 {
-            font-family:"Lucida Handwritting";
-            color:rgb(56, 9, 100);
-            font-size: 40px;
-            margin-bottom: 20px;
+            font-size: 5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #515151, #b4b3b3, #515151);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            animation: gradientAnimation 8s linear infinite;
         }
+        
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 400% 50%;
+            }
+            100% {
+                background-position:  0% 50%;
+            }
+        }
+        
+
 
         .hero p {
-            font-size: 20px;
-            color: rgb(166, 122, 206);
-            margin-bottom: 40px;
-            font-family:"Lucida Handwriting", cursive;
+            font-size: 15px;
+            color: rgb(255, 255, 255);
+            margin-bottom: 50px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
         }
 
         .button {
             border-radius: 10px;
             background-color: rgba(193, 196, 193, 0.3);
             border:rgba(53, 58, 8, 0.5);
-            color: #2e0b4e;
+            color: #ffffff;
             text-align: center;
             font-size: 15px;
             padding: 20px;
             width: 150px;
             transition: all 0.5s;
             cursor: pointer;
-  margin: 5px;
+  margin: 4px;
   
 }
 
@@ -84,15 +98,7 @@
   right: 0;
 }
 
-        footer {
-            background-color: rgba(219, 208, 245, 0.9);
-            color: rgb(68, 77, 104);
-            text-align: center;
-            padding: 10px;
-            width: 100%;
-            margin-top: auto;
-        }
-
+      
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 30px;
@@ -107,22 +113,13 @@
     </style>
 </head>
 <body>
-
-    
-    
-
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Welcome to InterviewMe</h1>
-        <p>Prepare for your dream job with expert interview coaching and resources.</p>
+        <h1>InterviewMe</h1>
+        <p>Be Ready, Be Hired!</p>
         <!-- Call-to-Action Button to Sign In Page -->
         <a href="signin.html" ><button class="button"><span>Get Started</span></button></a>
     </section>
-
-    <!-- Footer Section -->
-    <footer>
-        &copy; 2024 Interview Me. All rights reserved.
-    </footer>
 
 </body>
 </html>

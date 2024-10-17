@@ -19,13 +19,13 @@
     /* Header styling */
     header {
       position: fixed;
-      top: 0;
+      top: 0%;
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color:rgba(0, 0, 0, 0.2);
-      padding: 10px 20px;
+      padding: 2px 20px;
       color:rgb(65, 10, 110);;
       z-index: 10;
     }
@@ -33,15 +33,16 @@
     .logo {
       display: flex;
       align-items: center;
-      font-family: " ";
-      font-size: 50%;
+      font-size: 75%;
     }
 
     .logo img {
-      width: 50px;
+      width: 60px;
       margin-right: 10px;
     }
-
+    .title{
+      padding-top: 30px;
+    }
     .nav-links {
       display: flex;
       gap: 15px;
@@ -49,19 +50,21 @@
     }
 
     .nav-links a {
-      color: rgb(38, 3, 58);
+      color: rgb(255, 255, 255);
       text-decoration: none;
       padding: 5px 10px;
       border-radius: 5px;
     }
 
     .nav-links a:hover {
-      background-color: #9075aa;
+      background-color: #ffffff21;
     }
 
     .profile {
-      position: relative;
+      position:relative;
       cursor: pointer;
+      color: white;
+      
     }
 
     .profile-dropdown {
@@ -69,7 +72,7 @@
       position: absolute;
       right: 0;
       background-color: white;
-      color: rgb(47, 3, 53);
+      color: rgb(126, 115, 95);
       border-radius: 5px;
       overflow: hidden;
       box-shadow: 0px 8px 16px rgba(25, 3, 37, 0.2);
@@ -99,7 +102,9 @@
       align-items: center;
       text-align: center;
       padding: 20px;
-      background-image: url(back.jpg);
+      background-image: url(home.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
       border-bottom: 1px solid #ddd;
     }
 
@@ -110,19 +115,19 @@
     h1 {
       font-size: 3em;
       font-family: " ";
-      color: #3e0853;
-      margin-bottom: 10px;
-      animation: fadeIn 1s ease-in;
+      color: #ffffff;
+      margin-bottom: 30px;
+      animation: fadeIn 10ms ease-in;
      
     }
 
     p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-      animation: fadeIn 1.5s ease-in ;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      color: #8a50a1;
-      font-style: italic;
+      font-size: 12px;
+      margin-bottom: 50px;
+      animation: fadeIn 10ms ease-in ;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: #878787;
+      
       
     }
 
@@ -140,7 +145,7 @@
       align-items: center;
       justify-content: center;
       padding: 12px 25px;
-      background-color: rgba(23, 1, 29, 0.9);
+      background-color: #ffffff2a;
       font-family:Georgia, 'Times New Roman', Times, serif;
       color: white;
       border: none;
@@ -152,7 +157,7 @@
     }
 
     .upload-label:hover {
-      background-color: #3e0853;
+      background-color: #3535367f;
       transform: scale(1.05);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
@@ -165,7 +170,7 @@
 
     #interviewMeBtn {
       display: none;
-      background-color: #300e44;
+      background-color: #ffffff2a;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -176,18 +181,18 @@
     }
 
     #interviewMeBtn:hover {
-      background-color: #9648b4;
+      background-color: #3535367f;
       transform: scale(1.05);
     }
     
     /* Styling for the Mock Interview Section */
 #mockinterview {
-    padding: 90px 0;
-    background-color: #fff;
+    padding: 100px 0;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     font-size: small;
-    background-image: url("au.png");
+    background-color: white;
+    background-image: url();
 }
 
 #mockinterview h2 {
@@ -568,11 +573,12 @@ footer select {
   <header>
     <div class="logo">
       <img src="im.png" alt="Company Logo">
-      <h1>InterviewMe</h1>
+      <h1 class="title">InterviewMe</h1>
     </div>
     <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#mockinterview">Mock Interview</a>
+      
+      <a href="#mockinterview">Home</a>
+      <a href="#home">Mock Interview</a>
       <a href="#resumeBuilder">Resume Builder</a>
       <a href="#interview-Tips">Interview Tips</a>
       <a href="#about-us">About Us</a>
@@ -589,21 +595,6 @@ footer select {
     </nav>
   </header>
 
-  <!-- Home Section -->
-  <section id="home">
-    <div>
-      <h1>Welcome to InterviewMe</h1>
-      <p>Upload your CV to get started with our interview preparation process. We provide personalized mock interviews, resume building tools, and expert interview tips.</p>
-    <div class="upload-box">
-      <label for="cvUpload" class="upload-label">
-        <img src="file.png" alt="Upload Icon" class="upload-icon">
-        <span>Upload your CV</span>
-      </label>
-      <input type="file" id="cvUpload" accept=".pdf,.doc,.docx" style="display: none;">
-      <button id="interviewMeBtn" onclick="window.location.href='interview.html'">Interview Me</button>
-    </div>
-    </div>
-  </section>
 
   <!-- Mock Interview Section -->
   <section id="mockinterview">
@@ -619,6 +610,22 @@ footer select {
         </div>
     </div>
 </section>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div>
+      <h1>Welcome to InterviewMe</h1>
+      <p>Upload your CV to get started with our interview preparation process. We provide personalized mock interviews, resume building tools, and expert interview tips.</p>
+    <div class="upload-box">
+      <label for="cvUpload" class="upload-label">
+        <img src="file.png" alt="Upload Icon" class="upload-icon">
+        <span>Upload your CV</span>
+      </label>
+      <input type="file" id="cvUpload" accept=".pdf,.doc,.docx" style="display: none;">
+      <button id="interviewMeBtn" onclick="window.location.href='interview.html'">Interview Me</button>
+    </div>
+    </div>
+  </section>
 
 
   <!-- Resume Builder Section -->
