@@ -25,19 +25,21 @@
       justify-content: space-between;
       align-items: center;
       background-color:rgba(0, 0, 0, 0.2);
-      padding: 2px 20px;
-      color:rgb(65, 10, 110);;
+      padding:0px 20px;
+      height: 40px;
+      
+      color:rgb(243, 240, 245);;
       z-index: 10;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      font-size: 75%;
+      font-size: 45%;
     }
 
     .logo img {
-      width: 60px;
+      width: 30px;
       margin-right: 10px;
     }
     .title{
@@ -51,6 +53,7 @@
 
     .nav-links a {
       color: rgb(255, 255, 255);
+      font-size: smaller;
       text-decoration: none;
       padding: 5px 10px;
       border-radius: 5px;
@@ -63,8 +66,11 @@
     .profile {
       position:relative;
       cursor: pointer;
-      color: white;
-      
+      color: rgb(255, 255, 255);
+      font-size: smaller;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 5px;
     }
 
     .profile-dropdown {
@@ -97,7 +103,7 @@
     /* Full-page sections */
     section {
       height: 100vh;
-      display: flex;
+      
       justify-content: center;
       align-items: center;
       text-align: center;
@@ -107,7 +113,27 @@
       background-size: cover;
       border-bottom: 1px solid #ddd;
     }
-
+    #home{
+      display: flex;
+      justify-content: center;
+    
+    }
+    #resumeBuilder{
+      display: flex;
+      justify-content: center;
+    }
+    #interview-Tips{
+      display: flex;
+      justify-content: center;
+    }
+    #faqs{
+      display: flex;
+      justify-content: center;
+    }
+    #about-us{
+      display: flex;
+      justify-content: center;
+    }
     section:nth-child(even) {
       background-color: #e0e0e0;
     }
@@ -185,21 +211,6 @@
       transform: scale(1.05);
     }
     
-    /* Styling for the Mock Interview Section */
-#mockinterview {
-    padding: 100px 0;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    font-size: small;
-    background-color: white;
-    background-image: url();
-}
-
-#mockinterview h2 {
-    font-size: 3rem;
-    color: #34495e;
-    margin-bottom: 8px;
-}
 
 /* Container to center the content */
 .container::before {
@@ -286,7 +297,7 @@
     .resumeh {
       font-size: 3em;
       font-family: " ";
-      color: #3e0853;
+      color: #f9f6fa;
       margin-bottom: 10px;
       animation: fadeIn 1s ease-in;
      
@@ -297,7 +308,7 @@
       margin-bottom: 30px;
       animation: fadeIn 1.5s ease-in ;
       font-family: Georgia, 'Times New Roman', Times, serif;
-      color: #8a50a1;
+      color: #363a26;
       font-style: italic;
       
     }
@@ -314,7 +325,7 @@
 .resume-button-link {
     display: inline-block;
     padding: 12px 24px;
-    background-color: #1c0229; /* Green color */
+    background-color: #3535367f ; /* Green color */
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -323,7 +334,9 @@
 }
 
 .resume-button-link:hover {
-    background-color: #521152; /* Darker green on hover */
+  background-color: #ffffff2a;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Darker green on hover */
 }
 
     @keyframes fadeIn {
@@ -389,7 +402,7 @@
 }
 
 .tip-item {
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
@@ -418,7 +431,7 @@
 
 .toggle-icon {
     font-size: 1.5rem;
-    color: #3498db;
+    color: #6897b6;
     transition: transform 0.3s;
 }
 
@@ -533,29 +546,6 @@
     background-color: #2980b9;
 }
 
-/* Footer Styling */
-footer {
-    background-color: #111;
-    padding: 20px 0;
-    text-align: center;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: center;
-    color: #fff;
-}
-
-footer select {
-    padding: 5px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    font-size: 1rem;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -565,6 +555,85 @@ footer select {
     }
 }
 
+/* DASHBOARD *
+        /* Dashboard Section */
+        #dashboard {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url('back.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .dash {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+        }
+        .dash h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .dash p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .dash .cta-buttons {
+            margin-bottom: 20px;
+        }
+        .dash button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .sign-up-btn {
+            background-color: #f6a623;
+            color: white;
+        }
+        .help-btn {
+            background-color: white;
+            color: #f6a623;
+            border: 2px solid #f6a623;
+        }
+        .features-section {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Light background for feature boxes */
+        }
+        .feature {
+            width: 300px; /* Fixed width for boxes */
+            margin: 0 10px; /* Space between boxes */
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 0px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none; /* Remove underline from links */
+            color: #333; /* Text color */
+            height: 32vh;
+        }
+        .feature:hover {
+            background-color: #e0e0e0; /* Change background on hover */
+        }
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            color: #666;
+        }
+        .feature-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #56c7f6;
+        }
   </style>
 </head>
 <body>
@@ -577,12 +646,12 @@ footer select {
     </div>
     <nav class="nav-links">
       
-      <a href="#mockinterview">Home</a>
+      <a href="#dashboard">Home</a>
       <a href="#home">Mock Interview</a>
       <a href="#resumeBuilder">Resume Builder</a>
       <a href="#interview-Tips">Interview Tips</a>
-      <a href="#about-us">About Us</a>
       <a href="#faqs">FAQs</a>
+      <a href="#about-us">About Us</a>
       <div class="profile">
         <span>Profile</span>
         <div class="profile-dropdown">
@@ -596,19 +665,32 @@ footer select {
   </header>
 
 
-  <!-- Mock Interview Section -->
-  <section id="mockinterview">
-    <div class="container">
-        <div class="mock-content">
-            <div class="text-content">
-                <p>
-                    Welcome to <strong>InterviewMe</strong>platform, platform, where you can sharpen your interview skills and gain a competitive edge. Using AI and voice recognition, we simulate real-world interviews with personalized questions, real-time feedback, and adaptive algorithms. Practice with our AI interviewer to boost your confidence, enhance your skills, and increase your chances of success. Start your interview journey today!
-                </p>
-                <button class="cta-button">Start Your Mock Interview</button>
-            </div>
+  <!-- Dashboard Section -->
+  <section id="dashboard" class="dashboard">
+    <div class="dash">
+      <h1>It’s all coming together</h1>
+      <p>Empowering job candidates with AI-driven mock interviews, offering personalized, real-time feedback for enhanced interview preparation.</p>
+      <div class="cta-buttons">
+        <a href="signup.html">
+          <button class="sign-up-btn">Sign Up Free</button>
+          <button class="help-btn">Questions? We Can Help</button></a>
+      </div>
+  </div>
 
-        </div>
-    </div>
+  <!-- Features Section -->
+  <div class="features-section">
+      <a href="#home" class="feature"> <!-- Replace with your actual URL -->
+          <div class="feature-icon">📊</div>
+          <h3>InterviewMe</h3>
+          <p>Upload your CV to get started with our interview preparation process.</p>
+      </a>
+      <a href="#resumeBuilder" class="feature"> <!-- Replace with your actual URL -->
+          <div class="feature-icon">📅</div>
+          <h3>Resume Builder</h3>
+          <p>Build your resume here interactively</p>
+      </a>
+  </div>
+
 </section>
 
   <!-- Home Section -->
@@ -715,7 +797,12 @@ footer select {
     </div>
 </section>
 
-  <!-- About Us Section -->
+  <!-- FAQs Section -->
+  <section id="faqs">
+    <h2>FAQs</h2>
+    <p>Frequently asked questions.</p>
+  </section>
+
   <!-- About Us Section -->
 <section id="about-us">
   <div class="about-us-container">
@@ -775,25 +862,7 @@ footer select {
   </div>
 </section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-container">
-      <p>&copy; 2024 Mock Interview Inc. All rights reserved.</p>
-      <select name="language" id="language">
-          <option value="english">English</option>
-          <option value="spanish">Español</option>
-          <!-- Add other languages if necessary -->
-      </select>
-  </div>
-</footer>
-
-
-  <!-- FAQs Section -->
-  <section id="faqs">
-    <h2>FAQs</h2>
-    <p>Frequently asked questions.</p>
-  </section>
-
+  
   <script>
     // Show 'Interview Me' button when a file is uploaded
     const cvUpload = document.getElementById('cvUpload');
